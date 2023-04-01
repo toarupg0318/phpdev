@@ -42,46 +42,9 @@ services:
       - mysql-volume:/var/lib/mysql
     networks:
       - app-net
-#
-#  wp:
-#    image: wordpress:latest
-#    depends_on:
-#      - mysql_wp
-#    ports:
-#      - 8892:80
-#    volumes:
-#      - ./src/WordPress:/var/www/html
-#      - ./wp/php.ini:/usr/local/etc/php/php.ini
-#      - ./wp/uploads.ini:/usr/local/etc/php/conf.d/uploads.ini
-#    environment:
-#      WORDPRESS_DB_HOST: mysql_wp:3306
-#      WORDPRESS_DB_USER: user
-#      WORDPRESS_DB_PASSWORD: password
-#      WORDPRESS_DB_NAME: wp
-#      WORDPRESS_DEBUG: 1
-#      DEVELOPMENT: 1
-#    restart: always
-#    networks:
-#      - app-net
-#
-#  mysql_wp:
-#    image: mysql:8.0.27
-#    ports:
-#      - "13306:3306"
-#    environment:
-#      MYSQL_ROOT_PASSWORD: mysql
-#      MYSQL_DATABASE: wp
-#      MYSQL_USER: user
-#      MYSQL_PASSWORD: password
-#    restart: always
-#    volumes:
-#      - mysql_wp-volume:/var/lib/mysql
-#    networks:
-#      - app-net
 
 volumes:
   mysql-volume:
-#  mysql_wp-volume:
 
 networks:
   app-net:
