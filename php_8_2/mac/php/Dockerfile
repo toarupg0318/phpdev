@@ -5,7 +5,6 @@ LABEL description="PHP 8.2-FPM on Alpine Linux 3.17"
 
 COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
 
-# 必要なパッケージと PHP 拡張機能をインストール
 RUN apk update && apk add --no-cache \
     supervisor \
     bash \
@@ -23,14 +22,9 @@ RUN apk update && apk add --no-cache \
 RUN touch /var/run/supervisor.sock
 RUN chmod -R 777 /var/run/supervisor.sock
 
-# Supervisor 設定ファイルのコピー
 COPY supervisord.conf /etc/supervisord.conf
 
-# ワーキングディレクトリの設定
 WORKDIR /var/www/html
-
-# スーパーバイザーでプロセスを実行
-#CMD ["supervisord", "-c", "/etc/supervisord.conf"]
 
 COPY docker-php-entrypoint-override /usr/local/bin/docker-php-entrypoint-override
 RUN chmod -R 777 /usr/local/bin/docker-php-entrypoint-override
