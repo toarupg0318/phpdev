@@ -18,6 +18,7 @@ services:
     ports:
       - 8889:8889
       - 8891:8891
+      - 8892:8892
     volumes:
       - ./src:/var/www/html
       - ./nginx/default.conf:/etc/nginx/conf.d/default.conf
